@@ -23,10 +23,7 @@ export default {
 }
 
 input{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 162px;
-    text-align: center;
+    width: 50% !important;
 }
 
 </style>

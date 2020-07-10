@@ -9,16 +9,18 @@
 
 <script>
 export default {
-
+    name: "AccueilLogo"
 }
 </script>
 
 <style lang="scss">
 img{
-    height: 300px;
+    height: 150px;
 }
 
 h1{
     text-align: center;
+    margin: 20px;
+    font-size: xxx-large;
 }
 </style>

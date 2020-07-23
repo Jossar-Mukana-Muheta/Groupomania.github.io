@@ -1,6 +1,6 @@
 <template>
   <div>
-      <button class="waves-effect waves-light btn"  @click="connexion">{{text}}</button>
+      <button class="waves-effect waves-light btn"  @click="valider">{{text}}</button>
       
   </div>
 </template>
@@ -16,9 +16,10 @@ return {
 },
 
 methods:{
-    connexion(){
-        this.$router.push('Home')
+    valider(){
+        this.$emit('valider')
     }
+    
 }
 }
 
@@ -29,6 +30,7 @@ methods:{
 
 button{
    margin-bottom: 20px;
+   margin-top: 20px;
 }
 
 </style>

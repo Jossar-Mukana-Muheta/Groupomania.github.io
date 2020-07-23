@@ -2,14 +2,15 @@
 
     <div>
         <img src="../assets/logo.png" alt="logo" >
-        <h1>Bienvenue chez Groupamania</h1>
+        <h1>{{text}}</h1>
     </div>
   
 </template>
 
 <script>
 export default {
-    name: "AccueilLogo"
+    name: "AccueilLogo",
+    props: ["text"]
 }
 </script>
 

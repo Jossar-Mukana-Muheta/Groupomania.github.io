@@ -2,27 +2,33 @@
   
    <div class="home_container">
      <Setting/>
-     <h1 id="titre_principal">Bienvenue chez Groupomania</h1>
-     <img src="../assets/icon.png" alt="logo"/>
-     <Postes/>
+     <AccueilLogo text="Dernière Publications" />
+     <Postes v-on="showDetails"/>
    </div>
   
 </template>
 
 <script>
-import Postes from '../components/Postes'
-import Setting from '../components/Setting'
+import Postes from '@/components/Postes'
+import Setting from '@/components/Setting'
+import AccueilLogo from '@/components/AccueilLogo'
 
 export default {
   name : "Home",
   components : {
   Postes,
-  Setting
+  Setting,
+  AccueilLogo
 },
 
 data : function(){
   return{
     image : "@/assets/logo.png"
+  }
+},
+methods:{
+  showDetails(){
+    this.$router.push('Details')
   }
 }
 }

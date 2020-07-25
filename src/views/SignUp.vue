@@ -8,7 +8,7 @@
           <input  id="password" v-model="password" type="password" placeholder="Entrez votre mots de passe">
           <input  id="passwordConfirm" v-model="passwordConfirm" type="password" placeholder="Confirmez votre mots de passe">
           <span id="errorMessage">{{error}}</span>
-          <span>{{username}}</span>
+          <span>{{data}}</span>
       </form>
       <Button text="Créer mon compte" @valider="createAccount"/>
   </div>
@@ -29,7 +29,8 @@ data(){
         password: "",
         passwordConfirm: "",
         error:"",
-        username:''
+        username:'',
+        data:''
     }
 },
 
@@ -44,19 +45,27 @@ let password = document.getElementById('password')
             this.error = "Veuillez remplir tous les champs"
         }else{
 
-    if (!/^[a-zA-Z ]+$/.test(this.pseudo)) {
-    this.error = "Veuillez n'utiliser que des lettres";
+    if (!/^[a-zA-Z0-9]+$/.test(this.pseudo)) {
+    this.error = "Veuillez n'utiliser que des lettres et des chiffres";
     pseudo.focus();
-  } else if (!/^[a-zA-Z ]+$/.test(this.password)) {
-    this.error = "le mot de passe ne doit contenir que des lettres";
+  } else if (!/^[a-zA-Z0-9]+$/.test(this.password)) {
+    this.error = "le mot de passe ne doit contenir que des lettres et des chiffres";
     password.focus();
-  } else{
-      let pseudoBdd = this.pseudo
-      let passwordBdd = this.password
+  } else if(this.password != this.passwordConfirm){
+       this.error = "Veuillez entrer le même mot de passe"
+  }else{
+      let userPseudo = this.pseudo
+      let userPassword = this.password
     this.$axios
         .post("http://localhost:3000/api/signup", 
-        {pseudoBdd, passwordBdd})
-            .then(response => (this.username = response.data.pseudo))
+        {userPseudo, userPassword})
+            .then(response =>{
+                this.data = response.data.pseudo
+                this.$router.push('/');
+            })
+            .catch(()=>{
+                this.error= "Veuillez recommencer"
+            })
   }
         }
     }

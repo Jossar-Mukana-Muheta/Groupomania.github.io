@@ -13,7 +13,7 @@ Vue.use(VueRouter)
     component: Login
   },
   {
-    path: '/Home',
+    path: '/Home/:id',
     name: 'Home',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
